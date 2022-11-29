@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form method="post" th:action="${'/product/filter/result'}">
+  <input type="text" name="names">
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Найти</button>
+  <div th:each="el : ${result}">
+    <h3 th:text="${el.getNames}"></h3>
+    <p th:text="${el.getDR}"></p>
+    <p th:text="${el.getQuantity}"></p>
+    <p th:text="${el.getOnline}"></p>
+    <strong th:text="${el.getCent}"></strong>
+  </div>
+</form>
+</body>
+</html>

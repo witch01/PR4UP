@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action="${'/employee/add'}" method="post" th:object="${employee}">
+  <input type="text" th:field="*{surname}" name="surname" placeholder="Фамилия сотрудника">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+    <input type="date" th:field="*{dr}" name="dr" maxlength="8">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('dr')}" th:errors="*{dr}"></div><br>
+    <input type="checkbox" th:field="*{gender}" name="gender">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></div><br>
+  <input type="number" name="salary" th:field="*{salary}" placeholder="Зарплата сотрудника">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+  <input type="number" th:field="*{children}" name="children" placeholder="Количество детей">
+  <div style="color: floralwhite" th:if="${#fields.hasErrors('children')}" th:errors="*{children}"></div><br>
+  <br>
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Добавить сотрудника</button>
+</form>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action="${'/product/add'}" method="post" th:object="${product}">
+  <input type="text" th:field="*{names}" name="names" placeholder="Название">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('names')}" th:errors="*{names}"></div><br>
+  <input type="date" th:field="*{dr}" name="dr" maxlength="8">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('dr')}" th:errors="*{dr}"></div><br>
+  <input type="checkbox" th:field="*{online}" name="online">
+  <input type="number" th:field="*{cent}" name="cent" placeholder="Стоимость">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('cent')}" th:errors="*{cent}"></div><br>
+  <input type="number" th:field="*{quantity}" name="quantity" placeholder="Остаток">
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></div><br>
+  <br>
+  <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Добавить товар</button>
+</form>
+</body>
+</html>

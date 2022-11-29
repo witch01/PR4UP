@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body style="background:#20B2AA">
+<div th:insert="HEADER"></div>
+<form th:action = "@{/employee/{id}/edit(id=${employee.id})}" method="post" th:object="${employee}">
+    <label style="color:#FFFFFF">Фамилия</label>
+    <input type="text"  th:value="${employee.getSurname()}" style="text-align: center;margin-bottom: 20px" name="surname" size="25" maxlength="20" >
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"></div><br>
+
+    <label style="color:#FFFFFF">Заработная плата</label>
+    <input type="text" th:value="${employee.getSalary()}" style="text-align: center;margin-bottom: 20px"    name="salary" size="25" maxlength="20" >
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('salary')}" th:errors="*{salary}"></div><br>
+
+    <label style="color:#FFFFFF">Количество детей</label>
+    <input type="text" th:value="${employee.getChildren()}" style="text-align: center;margin-bottom: 20px"   name="children" size="25" maxlength="20" >
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('children')}" th:errors="*{children}"></div><br>
+
+    <label style="color:#FFFFFF"> Дата рождения</label>
+    <input type="date" th:value="${employee.getDr()}" style="text-align: center;margin-bottom: 20px" name="dr" >
+    <div style="color: floralwhite" th:if="${#fields.hasErrors('dr')}" th:errors="*{dr}"></div><br>
+    <label style="color:#FFFFFF">Пол</label>
+    <input type="text" th:value="${employee.getGender()}" style="text-align: center;margin-bottom: 20px"    maxlength="5" size="25" name="gender">
+    <div th:if="${#fields.hasErrors('gender')}"></div><br>
+    <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Сохранить изменения</button>
+</form>
+<div th:each="el : ${employee}">
+    <form th:action="'/employee/' + ${el.id} + '/remove'" method="post">
+        <button style="background: #FFC0CB; margin-bottom: 20px" type="submit" class="btn btn-del">Удалить</button>
+    </form>
+</div>
+</body>
+</html>
